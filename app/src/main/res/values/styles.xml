@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--横向间距-->
+    <dimen name="app_padding_horizontal">16dp</dimen>
+    <!--竖向间距-->
+    <dimen name="app_padding_vertical">10dp</dimen>
+    <!--标签组-->
+    <style name="app_group">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_marginTop">@dimen/app_padding_vertical</item>
+        <item name="android:paddingLeft">@dimen/app_padding_horizontal</item>
+        <item name="android:paddingRight">@dimen/app_padding_horizontal</item>
+    </style>
+    <!--标签文本样式-->
+    <style name="app_label_text">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <!--值文本样式-->
+    <style name="app_value_text">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+</resources>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout android:id="@+id/availableLanguagesOptionLayout" style="@style/app_group">
+
+            <TextView
+                style="@style/app_label_text"
+                android:text="@string/lab_available_languages_option" />
+
+            <TextView
+                android:id="@+id/availableLanguagesOptionText"
+                style="@style/app_value_text"
+                android:text="@string/lab_available_languages_option" />
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/availableLanguagesLayout" style="@style/app_group">
+
+            <TextView
+                style="@style/app_label_text"
+                android:text="@string/lab_available_languages" />
+
+            <TextView
+                android:id="@+id/availableLanguagesText"
+                style="@style/app_value_text"
+                android:text="@string/lab_available_languages" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/app_group">
+
+            <Switch
+                android:id="@+id/voiceNameOptionCheck"
+                style="@style/app_label_text"
+                android:text="@string/lab_voice_name_option" />
+
+            <TextView
+                android:id="@+id/voiceNameFormatText"
+                style="@style/app_value_text"
+                android:text="@string/voice_name_format" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

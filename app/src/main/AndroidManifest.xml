@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application
+        android:description="@string/app_description"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.Material.Light.DarkActionBar">
+        <!--引擎设置-->
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="true">
+        </activity>
+        <!--语言列表-->
+        <activity
+            android:name=".GetVoicesActivity"
+            android:theme="@android:style/Theme.NoDisplay"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.speech.tts.engine.CHECK_TTS_DATA" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <!--示例文本-->
+        <activity
+            android:name=".GetSampleActivity"
+            android:theme="@android:style/Theme.NoDisplay"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.speech.tts.engine.GET_SAMPLE_TEXT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <!--语音引擎服务-->
+        <service
+            android:name=".EmptyTextToSpeechService"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.TTS_SERVICE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <!--点击`首选引擎`旁边的设置按钮时弹出-->
+            <meta-data
+                android:name="android.speech.tts"
+                android:resource="@xml/tts" />
+        </service>
+    </application>
+
+</manifest>

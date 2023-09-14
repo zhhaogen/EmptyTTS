@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources >
+    <string name="app_name" >空壳TTS</string>
+    <string name="app_description">空壳子的文本转语音引擎</string>
+    <string name="lab_available_languages_option">支持语言</string>
+    <string-array name="available_languages_option">
+        <item>全部可用</item>
+        <item>一个都无</item>
+        <item>自定义选择</item>
+    </string-array>
+    <string name="lab_available_languages">自定义支持语言</string>
+    <string name="available_languages_size">支持语言%d个</string>
+    <string name="lab_voice_name_option">自定义语音名称</string>
+    <string name="voice_name_format">讲述人(%s)</string>
+    <string name="sample_text">Hi,我要一个手撕鸡饭</string>
+</resources>

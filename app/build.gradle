@@ -1,0 +1,47 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    compileSdk 33
+    namespace GROUP_ID
+    defaultConfig {
+        applicationId GROUP_ID
+        minSdk 21
+        targetSdk 33
+        versionCode 1
+        versionName LIBRARY_VERSION
+        multiDexEnabled=false
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+	//不生成viewholder ,尽量减小代码
+    buildFeatures {
+        viewBinding=false
+        buildConfig=false
+    }
+	//签名
+	if(System.getenv("ANDROID_SDK_HOME")!=null){
+        signingConfigs {
+            debug {
+                storeFile new File(System.getenv("ANDROID_SDK_HOME"),"key/debug.keystore")
+                storePassword 'android'
+                keyAlias 'androiddebugkey'
+                keyPassword 'android'
+            }
+        }
+    }
+}
+
+dependencies {
+    testImplementation "junit:junit:${LOCAL_JUNIT_VERSION}"
+}
