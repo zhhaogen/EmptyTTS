@@ -20,3 +20,4 @@ jobs:
           gradle-version: release-candidate
       - run: gradle build
       - run: ls -R |grep .apk
+      - run: echo "ok"
