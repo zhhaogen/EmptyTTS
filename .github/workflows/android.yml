@@ -19,9 +19,9 @@ jobs:
       - run: gradle build
       - run: ls -R |grep .apk
       - uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
         with:
           prerelease: true
-          tag_name: latest
           body: 最新自动打包
           files: |-
             ./app/build/outputs/apk/debug/app-debug.apk
