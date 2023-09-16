@@ -1,9 +1,11 @@
 name: Android CI
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
   pull_request:
-    branches: [ "main" ]
+    branches:
+      - main
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -19,4 +21,9 @@ jobs:
           gradle-version: release-candidate
       - run: gradle build
       - run: ls -R |grep .apk
+      - uses: ncipollo/release-action@v1
+        with:
+          allowUpdates: true
+          body: 最新自动打包
+          artifacts: ./app/build/outputs/apk/debug/app-debug.apk,./testapp/build/outputs/apk/debug/testapp-debug.apk
       - run: echo "ok"
