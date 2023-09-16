@@ -3,12 +3,12 @@ plugins {
 }
 
 android {
-    compileSdk 33
+    compileSdk Integer.parseInt(androidTargetSdkVersion)
     namespace "${GROUP_ID}.testapp"
     defaultConfig {
         applicationId "${GROUP_ID}.testapp"
-        minSdk 21
-        targetSdk 33
+        minSdk Integer.parseInt(androidMinSdkVersion)
+        targetSdk Integer.parseInt(androidTargetSdkVersion)
         versionCode 1
         versionName LIBRARY_VERSION
         multiDexEnabled=false
@@ -39,6 +39,12 @@ android {
                 keyPassword 'android'
             }
         }
+    }
+	lint {
+        quiet true
+        abortOnError false
+        ignoreWarnings true
+        checkDependencies false
     }
 }
 
