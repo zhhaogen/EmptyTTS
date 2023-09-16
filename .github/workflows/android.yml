@@ -15,7 +15,7 @@ jobs:
       - uses: gradle/gradle-build-action@v2
         id: setup-gradle
         with:
-          gradle-version: release-candidate
+          gradle-version: current
       - run: gradle build
       - run: ls -R |grep .apk
       - uses: softprops/action-gh-release@v1
