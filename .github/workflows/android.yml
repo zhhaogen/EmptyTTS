@@ -22,10 +22,11 @@ jobs:
           gradle-version: release-candidate
       - run: gradle build
       - run: ls -R |grep .apk
-      - uses: ncipollo/release-action@v1
+      - uses: softprops/action-gh-release@v1
         with:
-          allowUpdates: true
-          tag: main
+          prerelease: true
           body: 最新自动打包
-          artifacts: ./app/build/outputs/apk/debug/app-debug.apk,./testapp/build/outputs/apk/debug/testapp-debug.apk
+          files: |-
+            ./app/build/outputs/apk/debug/app-debug.apk
+            ./testapp/build/outputs/apk/debug/testapp-debug.apk
       - run: echo "ok"
