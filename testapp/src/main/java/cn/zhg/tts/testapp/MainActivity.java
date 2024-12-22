@@ -90,14 +90,20 @@ public class MainActivity extends Activity implements TextToSpeech.OnInitListene
         }
         setContainerEnabled(true);
         resultText.append("\n初始化引擎成功");
+        if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.LOLLIPOP)
+        {
+            resultText.append("\n语言数量 :(不支持)" );
+            resultText.append("\n语音数量 :(不支持)"  );
+            languagesSelect.setEnabled(false);
+            voicesSelect.setEnabled(false);
+            return;
+        }
         Set<Locale> languages = tts.getAvailableLanguages();
         resultText.append("\n语言数量 :" + languages.size());
         languagesSelect.setAdapter(new LocaleAdapter(this, new ArrayList<>(languages)));
-
         Set<Voice> voices = tts.getVoices();
         resultText.append("\n语音数量 :" + voices.size());
         voicesSelect.setAdapter(new VoiceAdapter(this, new ArrayList<>(voices)));
-
     }
 
     private void initEngines() {
@@ -123,8 +129,14 @@ public class MainActivity extends Activity implements TextToSpeech.OnInitListene
     }
 
     private void speek(String text) {
-        tts.setVoice((Voice) voicesSelect.getSelectedItem());
-        int ret = tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, System.nanoTime() + "");
+        int ret;
+        if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.LOLLIPOP)
+        { 
+            ret=tts.speak(text, TextToSpeech.QUEUE_FLUSH,  null);
+        }else{
+            tts.setVoice((Voice) voicesSelect.getSelectedItem());
+            ret = tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, System.nanoTime() + "");
+        }
         if (ret == TextToSpeech.ERROR) {
             resultText.append("\n朗读["+text+"]失败");
             return;

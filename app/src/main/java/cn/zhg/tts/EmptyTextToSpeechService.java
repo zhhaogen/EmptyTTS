@@ -1,8 +1,10 @@
 package cn.zhg.tts;
 
 import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.content.SharedPreferences;
 import android.media.*;
+import android.os.Build;
 import android.speech.tts.*;
 import android.text.TextUtils;
 
@@ -85,6 +87,7 @@ public class EmptyTextToSpeechService extends TextToSpeechService implements Con
         callback.done();
     }
 
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public List<Voice> onGetVoices() {
         boolean voiceNameOption = sh.getBoolean(KEY_voiceNameOption, false);
         if (!voiceNameOption) {
